@@ -1,0 +1,11 @@
+/home/thomas/Programs/Maze/Maze/obj/Debug/netcoreapp3.1/Maze.csprojAssemblyReference.cache
+/home/thomas/Programs/Maze/Maze/obj/Debug/netcoreapp3.1/Maze.AssemblyInfoInputs.cache
+/home/thomas/Programs/Maze/Maze/obj/Debug/netcoreapp3.1/Maze.AssemblyInfo.cs
+/home/thomas/Programs/Maze/Maze/bin/Debug/netcoreapp3.1/Maze
+/home/thomas/Programs/Maze/Maze/bin/Debug/netcoreapp3.1/Maze.deps.json
+/home/thomas/Programs/Maze/Maze/bin/Debug/netcoreapp3.1/Maze.runtimeconfig.json
+/home/thomas/Programs/Maze/Maze/bin/Debug/netcoreapp3.1/Maze.runtimeconfig.dev.json
+/home/thomas/Programs/Maze/Maze/bin/Debug/netcoreapp3.1/Maze.dll
+/home/thomas/Programs/Maze/Maze/bin/Debug/netcoreapp3.1/Maze.pdb
+/home/thomas/Programs/Maze/Maze/obj/Debug/netcoreapp3.1/Maze.dll
+/home/thomas/Programs/Maze/Maze/obj/Debug/netcoreapp3.1/Maze.pdb
