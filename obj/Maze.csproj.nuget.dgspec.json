@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/thomas/Programs/Maze/Maze/Maze.csproj": {}
+    "/home/thomas/Programs/MazeGit/Maze/Maze.csproj": {}
   },
   "projects": {
-    "/home/thomas/Programs/Maze/Maze/Maze.csproj": {
+    "/home/thomas/Programs/MazeGit/Maze/Maze.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/thomas/Programs/Maze/Maze/Maze.csproj",
+        "projectUniqueName": "/home/thomas/Programs/MazeGit/Maze/Maze.csproj",
         "projectName": "Maze",
-        "projectPath": "/home/thomas/Programs/Maze/Maze/Maze.csproj",
+        "projectPath": "/home/thomas/Programs/MazeGit/Maze/Maze.csproj",
         "packagesPath": "/home/thomas/.nuget/packages/",
-        "outputPath": "/home/thomas/Programs/Maze/Maze/obj/",
+        "outputPath": "/home/thomas/Programs/MazeGit/Maze/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/thomas/.nuget/NuGet/NuGet.Config"
@@ -50,7 +50,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.115/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.117/RuntimeIdentifierGraph.json"
         }
       }
     }

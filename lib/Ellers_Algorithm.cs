@@ -6,11 +6,12 @@ namespace Ellers_Algorithm
 {
     class Eller_Generation
     {
-        private int width, height;                 // --- Ширина и высота лабиринта в кол-ве клеток --- // 
-        private Cell [,] cells = new Cell [1,1];   // --------------- Клетки лабиринта ---------------- //
-        private Queue <int> void_multiplicities;   // -------------- свободные множества -------------- //
-        bool check = false;                        // для проверки при добавлении нижних стенок
-        int x;                                     // для хранения результатов генерации
+        private int width, height;                    // --- Ширина и высота лабиринта в кол-ве клеток --- // 
+        private Cell [,] cells = new Cell [1,1];      // --------------- Клетки лабиринта ---------------- //
+        private uint void_multiplicities;              // -------------- свободное множество -------------- //
+        bool check = false;                           // для проверки при добавлении нижних стенок
+        int x;                                        // для хранения результатов генерации
+        bool outside_wall_right, outside_wall_bottom; // для проверки при добавлении крайних стенок
         private static Random rand = new Random();
 
         // ---------------- Инициализация клеток ---------------- // 
@@ -38,9 +39,12 @@ namespace Ellers_Algorithm
                     }
                 }
 
-                // --- Обновление хранилища множеств --- //
-                void_multiplicities = new Queue <int>();
-                for (int i = 1; i <= width; ++i) void_multiplicities.Enqueue(i);
+                // --- Обновление множеств --- //
+                void_multiplicities = 1;
+
+                // --- Установка проверочных флагов --- //
+                outside_wall_right = false;
+                outside_wall_bottom = false;
             }
         //--------------------------------------------------------//
 
@@ -57,18 +61,17 @@ namespace Ellers_Algorithm
         //--------------------------------------------------------//
 
         // ----------------- Генерация лабиринта ---------------- //
-            private void Set_New_Multiplicity(int i, int j)
+            // ---- Присвоение множества из хранилища ---- //
+            private void Set_New_Multiplicity(int i, int j) 
             {
-                cells[i, j].set_multiplicity(void_multiplicities.Dequeue());
+                cells[i, j].set_multiplicity(void_multiplicities);
+                void_multiplicities++;
             }
 
-            private void Set_Multiplicity(int i, int j, int _multiplicity)
+            // ---- Присвоение определенного множества ---- //
+            private void Set_Multiplicity(int i, int j, uint _multiplicity)
             {
-                int old_mult = cells[i, j].Multiplicity();
-                cells[i, j].set_multiplicity(_multiplicity);
-                for (int ind = 0; ind < width; ind++)
-                if (cells[i, ind].Multiplicity()==old_mult) return;
-                void_multiplicities.Enqueue(old_mult);
+                cells[i, j].set_multiplicity(_multiplicity); // присваеваем новое множество
             }
 
             private void Generate_RightWalls(int i)
@@ -105,6 +108,23 @@ namespace Ellers_Algorithm
                     {
                         cells[i,j].Put_RightWall(); //ставим стенку справа
                     }
+                }
+
+                // ------------ Ставим крайнюю стенку ------------- //
+                // ---- Если строка не последняя или был вход справа ---- //
+                if ((i!=height-1)||(outside_wall_right))
+                {
+                        x = rand.Next(2); // если 0 - то ставим, если 1 - то не ставим
+
+                        // --- Ставим стенку справа --- //
+                        if (x==0) 
+                        {
+                            cells[i,width-1].Put_RightWall();                          
+                        } else if (x==1)
+                        // --- Не ставим стенку справа --- //
+                        {
+                            outside_wall_right = true;
+                        }
                 }
             }
 
@@ -149,6 +169,28 @@ namespace Ellers_Algorithm
                     check = false;
                 }
 
+            }
+
+            private void Generate_OutsideBottomWalls()
+            {
+                int i = height - 1;
+                for (int j = 0; j<width; j++)
+                {
+                    if ((j!=width-1)||(outside_wall_bottom))
+                    {
+                        x = rand.Next(2); // если 0 - то ставим, если 1 - то не ставим
+
+                        // --- Ставим стенку cнизу --- //
+                        if (x==0) 
+                        {
+                            cells[i,j].Put_BottomWall();                          
+                        } else if (x==1)
+                        // --- Не ставим стенку справа --- //
+                        {
+                            outside_wall_bottom = true;
+                        }
+                    }
+                }
             }
 
             private void Copy_Line(int i, int ii)
@@ -198,6 +240,7 @@ namespace Ellers_Algorithm
 
 
                 }
+                Generate_OutsideBottomWalls();
             }
 
             public void Generate()
@@ -222,20 +265,20 @@ namespace Ellers_Algorithm
                 for (int i = 0; i < height; i++) // проход по лабиринту по длине
                 {
                     // ---- Проход по лабиринту по ширине ---- //
-                    System.Console.Write("\n|"); 
+                    System.Console.Write("\n"); 
                     for (int j = 0; j < width; j++) // выставление правых стенок
                     {
                         cells[i, j].Display_RightWall();
                     }
-                    System.Console.Write("|");
-                    System.Console.Write("\n|"); 
+                    System.Console.Write("");
+                    System.Console.Write("\n"); 
                     for (int j = 0; j< width; j++) // выставление нижних стенок
                     {
                         cells[i, j].Display_BottomWall();
                     }
-                    System.Console.Write("|");
+                    System.Console.Write("");
                 }
-                System.Console.Write("\n");
+                //System.Console.Write("\n");
                 // -------------- Нижняя строка лабиринта ------------- //
                 //for (int i = 0; i <= width; i++) System.Console.Write("__");
                 System.Console.Write("\n\n");

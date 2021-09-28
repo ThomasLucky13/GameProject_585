@@ -6,7 +6,7 @@ namespace n_Cell
     {
         private bool right_wall, left_wall;    // ------------ Правая и левая стенка ------------ //
         private bool bottom_wall, top_wall;    // ----------- Верхняя и нижняя стенки ----------- //
-        private int multiplicity;              // --- Множество к которому принадлежит клетка --- //
+        private uint multiplicity;              // --- Множество к которому принадлежит клетка --- //
 
         // ---------------- Конструкторы ---------------- //
             public Cell()
@@ -134,13 +134,13 @@ namespace n_Cell
 
         // ----------------- Множество ------------------ //
             // ---- Получение множества ---- //
-            public int Multiplicity()
+            public uint Multiplicity()
             {
                 return multiplicity;
             }
 
             // ---- Установить множество --- //
-            public void set_multiplicity(int _multiplicity)
+            public void set_multiplicity(uint _multiplicity)
             {
                 if (_multiplicity >= 0) multiplicity = _multiplicity;
             }
