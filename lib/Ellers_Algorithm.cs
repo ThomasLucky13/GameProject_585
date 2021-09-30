@@ -255,34 +255,5 @@ namespace Ellers_Algorithm
                 return cells;
             }
         //--------------------------------------------------------//
-
-        // -------------- Вывод лабиринта на экран -------------- //
-            public void Display_Maze()
-            {
-                // ------------- Верхняя строка лабиринта ------------- //
-                //for (int i = 0; i <= width; i++) System.Console.Write("__");
-                // ------------------- Сам лабиринт ------------------- //
-                for (int i = 0; i < height; i++) // проход по лабиринту по длине
-                {
-                    // ---- Проход по лабиринту по ширине ---- //
-                    System.Console.Write("\n"); 
-                    for (int j = 0; j < width; j++) // выставление правых стенок
-                    {
-                        cells[i, j].Display_RightWall();
-                    }
-                    System.Console.Write("");
-                    System.Console.Write("\n"); 
-                    for (int j = 0; j< width; j++) // выставление нижних стенок
-                    {
-                        cells[i, j].Display_BottomWall();
-                    }
-                    System.Console.Write("");
-                }
-                //System.Console.Write("\n");
-                // -------------- Нижняя строка лабиринта ------------- //
-                //for (int i = 0; i <= width; i++) System.Console.Write("__");
-                System.Console.Write("\n\n");
-            }
-        //--------------------------------------------------------//
     }
 }

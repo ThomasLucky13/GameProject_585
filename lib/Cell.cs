@@ -2,7 +2,7 @@ using System;
 
 namespace n_Cell
 {
-    class Cell
+    public class Cell
     {
         private bool right_wall, left_wall;    // ------------ Правая и левая стенка ------------ //
         private bool bottom_wall, top_wall;    // ----------- Верхняя и нижняя стенки ----------- //
