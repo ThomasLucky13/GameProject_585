@@ -7,6 +7,7 @@ namespace n_Cell
         private bool right_wall, left_wall;    // ------------ Правая и левая стенка ------------ //
         private bool bottom_wall, top_wall;    // ----------- Верхняя и нижняя стенки ----------- //
         private uint multiplicity;              // --- Множество к которому принадлежит клетка --- //
+        private bool unused; 
 
         // ---------------- Конструкторы ---------------- //
             public Cell()
@@ -15,6 +16,7 @@ namespace n_Cell
                 bottom_wall = false;
                 left_wall = false;
                 top_wall = false;
+                unused = true;
                 multiplicity = 0;
             }
         //------------------------------------------------//
@@ -145,6 +147,16 @@ namespace n_Cell
                 if (_multiplicity >= 0) multiplicity = _multiplicity;
             }
         //------------------------------------------------//
+
+        public void Use()
+        {
+            unused = false;
+        }
+
+        public bool Unused()
+        {
+            return unused;
+        }
     }
 
 }

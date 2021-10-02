@@ -11,6 +11,8 @@ namespace Maze_pj
             {
                 int height = cells.GetLength(0);
                 int width = cells.GetLength(1);
+                for (int i = 0; i < width; i++) System.Console.Write("__");
+                System.Console.Write("\n");
 
                 // ------------------- Сам лабиринт ------------------- //
                 for (int i = 0; i < height; i++) // проход по лабиринту по длине
@@ -29,14 +31,24 @@ namespace Maze_pj
                     }
                     System.Console.Write("");
                 }
+                System.Console.Write("\n");
+                for (int i = 0; i < width; i++) System.Console.Write("__");
                 System.Console.Write("\n\n");
             }
         //--------------------------------------------------------//
 
         static void Main(string[] args)
         {
-            Cell[,] maze = Maze.Get_map(20,20);
+            System.Console.WriteLine("start");
+            //for (int i = 0; i < 1000000; i ++)
+            //{
+                Cell[,] maze= Maze.Get_map(60, 60, 4, 5, 8, 5);
+              //  System.Console.WriteLine(i);
+            //}
+            System.Console.WriteLine($"All is OK!");
             Display_Maze(maze);
+            
+            
         }
     }
 }
